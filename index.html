@@ -16,9 +16,8 @@
     #unity-canvas { display: block; width: 100%; height: 100%; background: #a6e3b0; touch-action: none; outline: none; }
     body.mobile #stage { width: 100vw; height: 100%; height: 100dvh; aspect-ratio: auto; }
     #loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: #a6e3b0; transition: opacity .45s ease; }
-    #loading img { width: min(40%, 150px); height: auto; border-radius: 50%; opacity: .9; }
-    #logo { font: 900 clamp(40px, 13vw, 64px)/1 "Arial Rounded MT Bold", "Nunito", system-ui, sans-serif; letter-spacing: -.02em; }
-    #logo span { display: inline-block; text-shadow: 0 4px 0 rgba(59,47,74,.18); animation: bob 1.6s ease-in-out infinite; }
+    #loading img.fm { width: min(34%, 120px); height: auto; border-radius: 50%; opacity: .9; }
+    #logo { width: min(78%, 340px) !important; height: auto; border-radius: 0 !important; opacity: 1 !important; animation: bob 2.4s ease-in-out infinite; }
     @keyframes bob { 50% { transform: translateY(-6px); } }
     #bar { width: min(56%, 240px); height: 8px; border-radius: 4px; background: rgba(59, 47, 74, .12); overflow: hidden; }
     #fill { width: 0; height: 100%; border-radius: 4px; background: linear-gradient(90deg, #ff6b6b, #ffc23c, #22b8a7, #4da8f0); transition: width .2s ease; }
@@ -34,8 +33,8 @@
   <div id="stage">
     <canvas id="unity-canvas" tabindex="-1"></canvas>
     <div id="loading">
-      <div id="logo"></div>
-      <img src="funday-morning.jpg" alt="Funday Morning Games">
+      <img id="logo" src="logo.png" alt="Herd-In!">
+      <img class="fm" src="funday-morning.jpg" alt="Funday Morning Games">
       <div id="bar"><div id="fill"></div></div>
       <div id="note"></div>
       <div id="error"></div>
@@ -52,9 +51,6 @@
     window.addEventListener("unhandledrejection", function (e) { lastError = String(e.reason && (e.reason.message || e.reason)).slice(0, 300); });
     var tr = (navigator.language || "").toLowerCase().indexOf("tr") === 0;
     document.querySelector("#note").textContent = tr ? "Yükleniyor…" : "Loading…";
-    var cols = ["#ff7f86", "#ffbe3d", "#5faeff", "#6cc58b", "#3b2f4a", "#ff7f86", "#5faeff", "#ffbe3d"];
-    document.querySelector("#logo").innerHTML = "Herd-In!".split("").map(function (c, i) {
-      return '<span style="color:' + cols[i] + ';animation-delay:' + (i * .08) + 's">' + c + "</span>"; }).join("");
     var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (mobile) document.body.classList.add("mobile");
 
@@ -62,12 +58,12 @@
     var config = {
       arguments: [],
       dataUrl: buildUrl + "/WebGL.data.unityweb",
-      frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb?v=da29249e5a",
-      codeUrl: buildUrl + "/WebGL.wasm.unityweb?v=da29249e5a",
+      frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb?v=0dbb7f7573",
+      codeUrl: buildUrl + "/WebGL.wasm.unityweb?v=0dbb7f7573",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "Funday Morning",
       productName: "Herd-In!",
-      productVersion: "0.1.0",
+      productVersion: "0.2.0",
       // Telefonlarda çözünürlük 2x ile sınırlı: pil ve ısınma için.
       devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
       showBanner: function (msg, type) { if (type === "error") showError(msg); },
@@ -113,7 +109,7 @@
     }
 
     var script = document.createElement("script");
-    script.src = buildUrl + "/WebGL.loader.js?v=da29249e5a";
+    script.src = buildUrl + "/WebGL.loader.js?v=0dbb7f7573";
     script.onload = function () {
       createUnityInstance(canvas, config, function (p) {
         document.querySelector("#fill").style.width = Math.round(p * 100) + "%";
