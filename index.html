@@ -166,13 +166,13 @@
     var buildUrl = "Build";
     var config = {
       arguments: [],
-      dataUrl: buildUrl + "/WebGL.data.unityweb?v=5ea39fee92",
-      frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb?v=5ea39fee92",
-      codeUrl: buildUrl + "/WebGL.wasm.unityweb?v=5ea39fee92",
+      dataUrl: buildUrl + "/WebGL.data.unityweb?v=e6d46d4260",
+      frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb?v=e6d46d4260",
+      codeUrl: buildUrl + "/WebGL.wasm.unityweb?v=e6d46d4260",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "Funday Morning",
       productName: "Herd-In!",
-      productVersion: "0.4.0",
+      productVersion: "0.5.0",
       // Telefonlarda çözünürlük 2x ile sınırlı: pil ve ısınma için.
       devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
       showBanner: function (msg, type) { if (type === "error") showError(msg); },
@@ -217,7 +217,7 @@
     }
 
     var script = document.createElement("script");
-    script.src = buildUrl + "/WebGL.loader.js?v=5ea39fee92";
+    script.src = buildUrl + "/WebGL.loader.js?v=e6d46d4260";
     script.onload = function () {
       createUnityInstance(canvas, config, boot.progress).then(function (inst) {
         window.unityInstance = inst;
