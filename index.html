@@ -166,9 +166,9 @@
     var buildUrl = "Build";
     var config = {
       arguments: [],
-      dataUrl: buildUrl + "/WebGL.data.unityweb?v=5072ff94dd",
-      frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb?v=5072ff94dd",
-      codeUrl: buildUrl + "/WebGL.wasm.unityweb?v=5072ff94dd",
+      dataUrl: buildUrl + "/WebGL.data.unityweb?v=178ef51bd1",
+      frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb?v=178ef51bd1",
+      codeUrl: buildUrl + "/WebGL.wasm.unityweb?v=178ef51bd1",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "Funday Morning",
       productName: "Herd-In!",
@@ -217,7 +217,7 @@
     }
 
     var script = document.createElement("script");
-    script.src = buildUrl + "/WebGL.loader.js?v=5072ff94dd";
+    script.src = buildUrl + "/WebGL.loader.js?v=178ef51bd1";
     script.onload = function () {
       createUnityInstance(canvas, config, boot.progress).then(function (inst) {
         window.unityInstance = inst;
